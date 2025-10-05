@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Nav from './components/Nav';
 import { AuthProvider } from './contexts/AuthContext';
 import Signup from './pages/Signup';
@@ -8,29 +8,37 @@ import BookList from './pages/BookList';
 import BookDetails from './pages/BookDetails';
 import AddEditBook from './pages/AddEditBook';
 import ProtectedRoute from './components/ProtectedRoute';
-import Profile from "./pages/Profile";
+import Profile from './pages/Profile';
 
-// Nav moved to components/Nav.js and will be imported
+// Navigation component for top menu
+function Navigation() {
   const user = JSON.parse(localStorage.getItem('user') || 'null');
+
   return (
     <div className="nav">
-      <div style={{flex:1}}>
-        <Link to="/">Home</Link> | <Link to="/add">Add Book</Link>
-        <a href="/profile" className="ml-4 text-blue-500">Profile</a>
-
+      <div style={{ flex: 1 }}>
+        <Link to="/">Home</Link> | <Link to="/add">Add Book</Link> | <Link to="/profile">Profile</Link>
       </div>
       <div>
-        {user ? <span className="small">Hi, {user.name}</span> : (<><Link to="/login">Login</Link> | <Link to="/signup">Signup</Link></>)}
+        {user ? (
+          <span className="small">Hi, {user.name}</span>
+        ) : (
+          <>
+            <Link to="/login">Login</Link> | <Link to="/signup">Signup</Link>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-export default function App(){
+// Main App component
+export default function App() {
   return (
     <AuthProvider>
       <Router>
         <Nav />
+        <Navigation />
         <div className="container">
           <Routes>
             <Route path="/" element={<BookList />} />
@@ -40,7 +48,6 @@ export default function App(){
             <Route path="/add" element={<ProtectedRoute><AddEditBook /></ProtectedRoute>} />
             <Route path="/edit/:id" element={<ProtectedRoute><AddEditBook /></ProtectedRoute>} />
             <Route path="/profile" element={<Profile />} />
-
           </Routes>
         </div>
       </Router>
