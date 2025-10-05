@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 // Connect DB
-connectDB(process.env.MONGO_URI);
+connectDB(); // <-- no parameter
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
