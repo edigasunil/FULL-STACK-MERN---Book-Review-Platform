@@ -16,6 +16,9 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/books', require('./routes/bookRoutes'));
 app.use('/api/reviews', require('./routes/reviewRoutes'));
 
+// ✅ Add Profile Route
+app.use('/api/profile', require('./routes/profile'));
+
 // Error middleware
 app.use(errorHandler);
 

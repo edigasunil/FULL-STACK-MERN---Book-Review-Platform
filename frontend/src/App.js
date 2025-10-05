@@ -8,6 +8,7 @@ import BookList from './pages/BookList';
 import BookDetails from './pages/BookDetails';
 import AddEditBook from './pages/AddEditBook';
 import ProtectedRoute from './components/ProtectedRoute';
+import Profile from "./pages/Profile";
 
 // Nav moved to components/Nav.js and will be imported
   const user = JSON.parse(localStorage.getItem('user') || 'null');
@@ -15,6 +16,8 @@ import ProtectedRoute from './components/ProtectedRoute';
     <div className="nav">
       <div style={{flex:1}}>
         <Link to="/">Home</Link> | <Link to="/add">Add Book</Link>
+        <a href="/profile" className="ml-4 text-blue-500">Profile</a>
+
       </div>
       <div>
         {user ? <span className="small">Hi, {user.name}</span> : (<><Link to="/login">Login</Link> | <Link to="/signup">Signup</Link></>)}
@@ -36,6 +39,8 @@ export default function App(){
             <Route path="/books/:id" element={<BookDetails />} />
             <Route path="/add" element={<ProtectedRoute><AddEditBook /></ProtectedRoute>} />
             <Route path="/edit/:id" element={<ProtectedRoute><AddEditBook /></ProtectedRoute>} />
+            <Route path="/profile" element={<Profile />} />
+
           </Routes>
         </div>
       </Router>
