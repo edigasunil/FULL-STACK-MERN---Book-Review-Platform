@@ -1,0 +1,26 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f8; color: #111; }
+.container { max-width: 900px; margin: 20px auto; padding: 16px; }
+.card { background: white; padding: 12px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+input, textarea, select, button { display: block; width: 100%; margin: 8px 0; padding: 8px; border-radius: 6px; border: 1px solid #ddd; }
+button { cursor: pointer; }
+.nav { display:flex; gap:12px; align-items:center; padding:12px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.05); }
+.nav a { text-decoration:none; color:#333; font-weight:500; }
+.small { font-size:0.9rem; color:#555; }
+.list-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px; }
+.rating { color: #ff9900; font-weight:700; }
+
+
+/* Dark mode */
+body[data-theme="dark"] {
+  background: #0f1720;
+  color: #e6eef6;
+}
+body[data-theme="dark"] .card {
+  background: #0b1220;
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+body[data-theme="dark"] .nav { background: #071023; color: #e6eef6; }
+body[data-theme="dark"] input, body[data-theme="dark"] textarea, body[data-theme="dark"] select {
+  background: rgba(255,255,255,0.02); color: #e6eef6; border: 1px solid rgba(255,255,255,0.06);
+}

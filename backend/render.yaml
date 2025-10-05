@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: book-review-backend
+    env: docker
+    plan: free
+    dockerfilePath: Dockerfile
+    repo: <YOUR_GITHUB_USERNAME>/REPO_NAME
+    branch: main
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm run start
